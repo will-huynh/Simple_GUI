@@ -10,7 +10,6 @@ class Simple_GUI(object):
         self.root_window = Tk()
         self.tk_pack_directions = [LEFT, RIGHT, TOP, BOTTOM]
         self.default_button_name = 'Submit'
-        self.close_window_after_submit = True
 
         #Names of text-entry fields
         self.fields = fields
@@ -31,14 +30,15 @@ class Simple_GUI(object):
             text = entry[1].get()
             self.results.append([field, text])
             self.submit_form = True
-        if self.close_window_after_submit is True:
-            self.quit()
+
+    #Event listener for get_entries (i.e: button press)
+    def get_entries_listener(self, event):
+        self.get_entries()
 
     #Method to flush results if form is submitted; useful if you want multiple form submissions
     def flush_results(self):
-        if self.submit_form is True:
-            self.results = []
-            self.submit_form = False
+        self.results = []
+        self.submit_form = False
 
     #Method to create user text-entry form
     def create_form(self):
@@ -56,13 +56,11 @@ class Simple_GUI(object):
         if direction in self.tk_pack_directions:
             button = Button(self.root_window, text='{}'.format(name))
             button.pack(side=direction, padx=5, pady=5)
-            button.bind('<ButtonPress-1>', self.get_entries)
+            button.bind('<ButtonPress-1>', self.get_entries_listener)
         else:
             print('Direction must be: {}'.format(self.tk_pack_directions))
 
     #Quickly create a generic menu with text-entry fields and a submit button; provide method w/ False to prevent window from closing on completion
     def create_gui(self, close_window):
         self.create_form()
-        self.create_submit_button()
-        if close_window is False:
-            self.close_window_after_submit = False
+        self.create_submit_button(self.default_button_name, self.tk_pack_directions[0])
