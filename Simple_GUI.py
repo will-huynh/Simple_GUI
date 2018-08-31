@@ -2,7 +2,7 @@ from tkinter import *
 import os
 import sys
 
-class Simple_GUI(object):
+class GUI_instance(object):
 
     def __init__(self, fields):
 
