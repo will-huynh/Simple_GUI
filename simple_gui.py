@@ -31,7 +31,7 @@ class Simple_GUI(object):
             text = entry[1].get()
             self.results.append([field, text])
             self.submit_form = True
-        if self.close_window_after_submit = True:
+        if self.close_window_after_submit is True:
             self.quit()
 
     #Method to flush results if form is submitted; useful if you want multiple form submissions
@@ -56,7 +56,7 @@ class Simple_GUI(object):
         if direction in self.tk_pack_directions:
             button = Button(self.root_window, text='{}'.format(name))
             button.pack(side=direction, padx=5, pady=5)
-            button.bind(<'ButtonPress-1'>, self.get_entries)
+            button.bind('<ButtonPress-1>', self.get_entries)
         else:
             print('Direction must be: {}'.format(self.tk_pack_directions))
 
