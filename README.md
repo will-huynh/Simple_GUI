@@ -1,2 +1,2 @@
 # Simple_GUI
-A very simple GUI for creating modular Python menus.
+A very simple GUI for creating a custom Python menu.
