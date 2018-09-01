@@ -61,6 +61,6 @@ class GUI_instance(object):
             print('Direction must be: {}'.format(self.tk_pack_directions))
 
     #Quickly create a generic menu with text-entry fields and a submit button; provide method w/ False to prevent window from closing on completion
-    def create_gui(self, close_window):
+    def create_gui(self):
         self.create_form()
         self.create_submit_button(self.default_button_name, self.tk_pack_directions[0])
